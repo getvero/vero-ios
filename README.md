@@ -17,7 +17,7 @@ To get started, you will need to add the following dependancies.
 
 Interacting with the Vero API using our wrapper object is super simple. For example, to track an event when a user signs up to your service.
 
-```
+```objectivec
 #import "Vero.h"
 
 - (void) doSomething {
