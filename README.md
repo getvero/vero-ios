@@ -15,10 +15,9 @@ To get started, you will need to add the following dependancies.
 
 ## Using the Vero API
 
-Interacting with the Vero API using our wrapper object is super simple.
+Interacting with the Vero API using our wrapper object is super simple. Here are some common scenarios:
 
 **Example: Track an event when a user signs up from your app**
-
 ```objectivec
 #import "Vero.h"
 
@@ -36,7 +35,6 @@ Interacting with the Vero API using our wrapper object is super simple.
 ```
 
 **Example: Track or update a user's age from your app**
-
 ```objectivec
 #import "Vero.h"
 
@@ -54,7 +52,6 @@ Interacting with the Vero API using our wrapper object is super simple.
 
 **Example: Edit an existing user's age from your app**
 Note: this operation will not create a new user if they do not already exist
-
 ```objectivec
 #import "Vero.h"
 
@@ -71,7 +68,6 @@ Note: this operation will not create a new user if they do not already exist
 ```
 
 **Example: Tag an existing user with "VIP" from your app**
-
 ```objectivec
 #import "Vero.h"
 
@@ -86,7 +82,6 @@ Note: this operation will not create a new user if they do not already exist
 ```
 
 **Example: Unsubscribe a user from Vero emails using your app**
-
 ```objectivec
 #import "Vero.h"
 
