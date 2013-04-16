@@ -51,6 +51,7 @@ Interacting with the Vero API using our wrapper object is super simple. Here are
 ```
 
 **Example: Edit an existing user's age from your app**
+
 Note: this operation will not create a new user if they do not already exist
 ```objectivec
 #import "Vero.h"
