@@ -17,17 +17,19 @@ To get started, you will need to add the following dependancies.
 
 Interacting with the Vero API using our wrapper object is super simple. For example, to track an event when a user signs up to your service.
 
-  #import "Vero.h"
+```
+#import "Vero.h"
 
-  - (void) doSomething {
-    Vero *vero = [[Vero alloc] init];
-      vero.authToken = @"yourVeroAuthToken";
+- (void) doSomething {
+  Vero *vero = [[Vero alloc] init];
+  vero.authToken = @"yourVeroAuthToken";
 
-    NSDictionary* me = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"james@getvero.com", @"id",
-                           [NSNumber numberWithBool:true], @"awesome", nil];
-      NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys: @"MonkeyMagic", @"appName", nil];
-      [vero eventsTrack:@"Signed up" identity:me data:data developmentMode: false];
-  }
+  NSDictionary* me = [NSDictionary dictionaryWithObjectsAndKeys:
+                     @"james@getvero.com", @"id",
+                     [NSNumber numberWithBool:true], @"awesome", nil];
+  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys: @"MonkeyMagic", @"appName", nil];
+  [vero eventsTrack:@"Signed up" identity:me data:data developmentMode: false];
+}
+```
 
 For comprohensive list of supported APIs, see [Events API](https://github.com/getvero/vero-api/blob/master/sections/api/events.md) and [User API](https://github.com/getvero/vero-api/blob/master/sections/api/users.md).
