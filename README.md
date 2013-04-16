@@ -15,7 +15,9 @@ To get started, you will need to add the following dependancies.
 
 ## Using the Vero API
 
-Interacting with the Vero API using our wrapper object is super simple. For example, to track an event when a user signs up to your service.
+Interacting with the Vero API using our wrapper object is super simple.
+
+**Example: Track an event when a user signs up from your app**
 
 ```objectivec
 #import "Vero.h"
@@ -27,10 +29,73 @@ Interacting with the Vero API using our wrapper object is super simple. For exam
   NSDictionary* me = [NSDictionary dictionaryWithObjectsAndKeys:
                      @"james@getvero.com", @"id",
                      [NSNumber numberWithBool:true], @"awesome", nil];
-  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys: @"MonkeyMagic", @"appName", nil];
+  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys: @"iphone", @"source", nil];
   
-  [vero eventsTrack:@"Signed up" identity:me data:data developmentMode: false];
+  [vero eventsTrack:@"Signed up" identity:me data:data developmentMode:false];
 }
 ```
 
-For comprohensive list of supported APIs, see [Events API](https://github.com/getvero/vero-api/blob/master/sections/api/events.md) and [User API](https://github.com/getvero/vero-api/blob/master/sections/api/users.md).
+**Example: Track or update a user's age from your app**
+
+```objectivec
+#import "Vero.h"
+
+- (void) doSomething {
+  Vero *vero = [[Vero alloc] init];
+  vero.authToken = @"yourVeroAuthToken";
+
+  NSDictionary* me = [NSDictionary dictionaryWithObjectsAndKeys:
+                     @"james@getvero.com", @"id",
+                     [NSNumber numberWithInt:25], @"age", nil];
+  
+  [vero usersTrack:@"james@getvero" email:nil data:me developmentMode:false];
+}
+```
+
+**Example: Edit an existing user's age from your app**
+Note: this operation will not create a new user if they do not already exist
+
+```objectivec
+#import "Vero.h"
+
+- (void) doSomething {
+  Vero *vero = [[Vero alloc] init];
+  vero.authToken = @"yourVeroAuthToken";
+
+  NSDictionary* me = [NSDictionary dictionaryWithObjectsAndKeys:
+                     @"james@getvero.com", @"id",
+                     [NSNumber numberWithInt:25], @"age", nil];
+  
+  [vero usersEdit:@"james@getvero" changes:me developmentMode:false];
+}
+```
+
+**Example: Tag an existing user with "VIP" from your app**
+
+```objectivec
+#import "Vero.h"
+
+- (void) doSomething {
+  Vero *vero = [[Vero alloc] init];
+  vero.authToken = @"yourVeroAuthToken";
+
+  NSArray* tags = [NSArray arrayWithObject:@"VIP"];
+  
+  [vero usersTagsEdit:@"james@getvero" add:tags remove:nil developmentMode:false];
+}
+```
+
+**Example: Unsubscribe a user from Vero emails using your app**
+
+```objectivec
+#import "Vero.h"
+
+- (void) doSomething {
+  Vero *vero = [[Vero alloc] init];
+  vero.authToken = @"yourVeroAuthToken";
+  
+  [vero usersUnsubscribe:@"james@getvero"];
+}
+```
+
+For more indepth information on each of the supported APIs, see our API reference: [Events API](https://github.com/getvero/vero-api/blob/master/sections/api/events.md) and [User API](https://github.com/getvero/vero-api/blob/master/sections/api/users.md).
