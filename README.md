@@ -28,6 +28,7 @@ Interacting with the Vero API using our wrapper object is super simple. For exam
                      @"james@getvero.com", @"id",
                      [NSNumber numberWithBool:true], @"awesome", nil];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys: @"MonkeyMagic", @"appName", nil];
+  
   [vero eventsTrack:@"Signed up" identity:me data:data developmentMode: false];
 }
 ```
