@@ -31,7 +31,7 @@
 // Events
 
 - (void) eventsTrack: (NSString*)eventName identity:(NSDictionary*)userProperties data:(NSDictionary*)data developmentMode:(BOOL)devMode {
-    NSString* url = @"https://www.getvero.com/api/v2/events/track.json";
+    NSString* url = @"https://api.getvero.com/api/v2/events/track.json";
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             eventName,       @"event_name",
@@ -49,7 +49,7 @@
 // Users
 
 - (void) usersTrack: (NSString*)userId email:(NSString*)email data:(NSDictionary*)userProperties developmentMode:(BOOL)devMode {
-    NSString* url = @"https://www.getvero.com/api/v2/users/track.json";
+    NSString* url = @"https://api.getvero.com/api/v2/users/track.json";
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
@@ -69,7 +69,7 @@
 }
 
 - (void) usersEdit: (NSString*)userId changes:(NSDictionary*)changes developmentMode:(BOOL)devMode {
-    NSString* url = @"https://www.getvero.com/api/v2/users/edit.json";
+    NSString* url = @"https://api.getvero.com/api/v2/users/edit.json";
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
@@ -81,7 +81,7 @@
 }
 
 - (void) usersTagsEdit: (NSString*)userId add:(NSArray*)add remove:(NSArray*)remove developmentMode:(BOOL)devMode {
-    NSString* url = @"https://www.getvero.com/api/v2/users/tags/edit.json";
+    NSString* url = @"https://api.getvero.com/api/v2/users/tags/edit.json";
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
@@ -98,7 +98,7 @@
 }
 
 - (void) usersUnsubscribe: (NSString*)userId {
-    NSString* url = @"https://www.getvero.com/api/v2/users/unsubscribe.json";
+    NSString* url = @"https://api.getvero.com/api/v2/users/unsubscribe.json";
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
