@@ -10,6 +10,7 @@
 
 @interface Vero : NSObject
 
++(Vero*)shared;
 @property BOOL debug;
 @property (strong) NSString* authToken;
 

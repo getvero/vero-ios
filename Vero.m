@@ -12,7 +12,11 @@
 
 @synthesize authToken;
 @synthesize debug;
-
+static Vero *sharedObject;
++(Vero *)shared{
+    if(!sharedObject) sharedObject = [[Vero allocWithZone:NULL] init];
+    return sharedObject;
+}
 - (void) makeApiCall: (NSString*)url method:(NSString*)method params: (NSDictionary*)params {
     NSURL *veroUrl              = [NSURL URLWithString:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:veroUrl];
