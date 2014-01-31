@@ -4,14 +4,15 @@ The simplest way to get up and running with Vero with your existing XCode projec
 
 ## Getting started
 
-To get started, you will need to add the following dependancies.
+Vero support iOS5 and above. 
 
-1) Add the following third party libraries
+Copy Vero.h and Vero.m to your XCode project
 
-- [asi-http-request](http://allseeing-i.com/ASIHTTPRequest/) - for instructions on adding to your project, see [setup instructions](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions)
-- [JSONKit](https://github.com/johnezang/JSONKit)
-
-2) Copy Vero.h and Vero.m to your XCode project
+```objectivec
+	Vero *vero = [Vero shared];
+	[vero setAuthToken:@"yourVeroAuthToken"];
+	vero.debug = YES;
+```
 
 ## Using the Vero API
 
