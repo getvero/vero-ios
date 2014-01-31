@@ -52,7 +52,7 @@ static Vero *sharedObject;
                             eventName,       @"event_name",
                             self.authToken,  @"auth_token",
                             userProperties,  @"identity",
-                            devMode,         @"development_mode", nil];
+                            @(devMode),         @"development_mode", nil];
     
     if (data) {
         [params setValue:data forKey:@"data"];
@@ -68,7 +68,7 @@ static Vero *sharedObject;
     
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
-                            devMode,        @"development_mode", nil];
+                            @(devMode),        @"development_mode", nil];
     
     if (userId) {
         [params setValue:userId forKey:@"id"];
@@ -90,7 +90,7 @@ static Vero *sharedObject;
                             self.authToken, @"auth_token",
                             userId,         @"id",
                             changes,        @"changes",
-                            devMode,        @"development_mode", nil];
+                            @(devMode),        @"development_mode", nil];
     
     [self makeApiCall:url method:@"PUT" params:params];
 }
@@ -101,7 +101,7 @@ static Vero *sharedObject;
     NSDictionary* params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                             self.authToken, @"auth_token",
                             userId,         @"id",
-                            devMode,        @"development_mode", nil];
+                            @(devMode),        @"development_mode", nil];
     if (add) {
         [params setValue:add forKey:@"add"];
     }
