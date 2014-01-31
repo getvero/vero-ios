@@ -14,18 +14,17 @@
 
 - (void) makeApiCall: (NSString*)url method:(NSString*)method params: (NSDictionary*)params {
     NSURL *veroUrl              = [NSURL URLWithString:url];
-    ASIHTTPRequest *request     = [ASIHTTPRequest requestWithURL:veroUrl];
-    NSString *jsonString        = [params JSONString];
-    NSLog(@"%@ %@ %@", method, url, jsonString);
-    
-    NSMutableData *requestBody  = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
-    [request addRequestHeader:@"Accept" value:@"application/json"];
-    [request setRequestMethod:method];
-    [request setPostBody:requestBody];
-    
-    [request startAsynchronous];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:veroUrl];
+    NSError *error;
+    NSMutableData *requestBody = [[NSJSONSerialization dataWithJSONObject:params
+                                                                  options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                                    error:&error] mutableCopy];
+    [request setHTTPMethod:method];
+    [request setHTTPBody:requestBody];
+    [request setValue:@"application/json; encoding=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSOperationQueue *queue = [NSOperationQueue new];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:nil];
 }
 
 // Events
