@@ -11,6 +11,7 @@
 @implementation Vero
 
 @synthesize authToken;
+@synthesize debug;
 
 - (void) makeApiCall: (NSString*)url method:(NSString*)method params: (NSDictionary*)params {
     NSURL *veroUrl              = [NSURL URLWithString:url];
@@ -19,12 +20,23 @@
     NSMutableData *requestBody = [[NSJSONSerialization dataWithJSONObject:params
                                                                   options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                                                                     error:&error] mutableCopy];
+    if(self.debug) NSLog(@"%@ %@", method, url);
     [request setHTTPMethod:method];
     [request setHTTPBody:requestBody];
     [request setValue:@"application/json; encoding=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     NSOperationQueue *queue = [NSOperationQueue new];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:nil];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(self.debug){
+            if(connectionError){
+                NSLog(@"error from Vero %@",connectionError);
+            }
+            else{
+                NSString *parsedJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                NSLog(@"result from Vero %@",parsedJSON);
+            }
+        }
+    }];
 }
 
 // Events

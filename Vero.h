@@ -10,6 +10,7 @@
 
 @interface Vero : NSObject
 
+@property BOOL debug;
 @property (strong) NSString* authToken;
 
 - (void) eventsTrack: (NSString*)eventName identity:(NSDictionary*)userProperties data:(NSDictionary*)data developmentMode:(BOOL)devMode;
