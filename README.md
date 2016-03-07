@@ -1,6 +1,8 @@
 # vero-ios
 
-The simplest way to get up and running with Vero with your existing XCode project is by using our iOS API wrapper.
+This is an old library that suggests an approach for running Vero from within an existing XCode project. It is a thin wrapper for Vero's API. The full documentation for this API can be found [here](http://developers.getvero.com/?bash).
+
+Alternatively, we would recommend using [Segment.com's](https://segment.com) [iOs Library](https://segment.com/docs/libraries/ios/).
 
 ## Getting started
 
